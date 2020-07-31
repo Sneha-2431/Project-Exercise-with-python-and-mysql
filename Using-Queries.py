@@ -8,9 +8,13 @@ database = "ardit700_pm1database"
 )
 
 cursor = con.cursor()
+word = input("Enter a word : ")
 
-query = cursor.execute("SELECT * FROM Dictionary WHERE Expression = 'line' ")
+query = cursor.execute("SELECT * FROM Dictionary WHERE Expression = '%s' % word ")
 results = cursor.fetchall()
 
-for result in results:
-    print(result)
+if results:
+    for result in results:
+        print(result)
+else:
+    print("No word found")
